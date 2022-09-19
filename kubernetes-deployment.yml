@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: lms-docker-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: lms-docker-kubernetes
+  replicas: 3 
+  template:
+     metadata: 
+        labels:
+           app: lms-docker-kubernetes
+     spec:
+       containers:
+        - name : lms-docker-kubernetes
+          image: lms-docker-kubernetes:1
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          # The port that the container is running on in the cluster
+     
